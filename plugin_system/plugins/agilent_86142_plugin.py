@@ -15,11 +15,12 @@ class OSA_86142(OSAInterface):
             try:
                 inst = rm.open_resources(res)
                 idn = inst.query("*IDN?")
+                print(idn)
                 if "86142" in idn:
                     return inst
             except:
                 continue
-        return None
+            return None
     
     def __init__(self, inst):
         self.inst = inst
