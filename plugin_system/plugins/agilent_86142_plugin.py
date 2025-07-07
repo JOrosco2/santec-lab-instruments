@@ -13,9 +13,9 @@ class OSA_86142(OSAInterface):
         rm = pyvisa.ResourceManager()
         for res in rm.list_resources():
             try:
-                inst = rm.open_resources(res)
+                print(f"Trying resource: {res}")
+                inst = rm.open_resource(res)
                 idn = inst.query("*IDN?")
-                print(idn)
                 if "86142" in idn:
                     return inst
             except:
