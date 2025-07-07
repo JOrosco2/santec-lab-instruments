@@ -10,6 +10,7 @@ def discover_plugins(folder="plugins", plugin_type="power_meter"):
         mod = importlib.import_module(f"{folder}.{module_name}")
         if hasattr(mod, "plugin_info") and mod.plugin_info.get("type") == plugin_type:
             cls_name = mod.plugin_info["class"]
+            print(cls_name)
             cls = getattr(mod,cls_name)
             plugins.append((module_name,cls))
     return plugins
