@@ -1,0 +1,17 @@
+# santec-lab-instruments/pyproject.toml
+
+[project]
+name = "santec-lab-instruments"
+version = "0.1.0"
+description = "Modular plugin system for santec test and calibration lab"
+authors = [
+  { name="Jesse Orosco", email="jesse.orosco@santec.com" }
+]
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.7"
+dependencies = ["pyvisa"]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
