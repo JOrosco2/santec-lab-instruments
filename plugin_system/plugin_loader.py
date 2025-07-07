@@ -28,4 +28,4 @@ def autodetect_devices(count=1,type="power_meter"):
                     return found
             else:
                 break
-    raise RuntimeError(f"Only found {len(found)} "+type+" , expected {count}")
+    raise RuntimeError(f"Only found {len(found)} "+type+" , expected "+str(count))
