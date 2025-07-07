@@ -27,7 +27,7 @@ def discover_plugins(package="plugin_system.plugins", plugin_type="power_meter")
 
 #method for automaticlly connecting devices. User can sepcify number of a type of device to detect
 def autodetect_devices(count=1,type="power_meter"):
-    plugins = discover_plugins("plugins",type)
+    plugins = discover_plugins("plugin_system.plugins",type)
     found = []
     for module_name, cls in plugins:
         while True:
