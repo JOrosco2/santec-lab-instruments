@@ -32,6 +32,7 @@ def autodetect_devices(count=1,type="power_meter"):
     found = []
     for module_name, cls in plugins:
         while True:
+            print(f"Looking into {cls} from {module_name}")
             conn = cls.can_connect()
             if conn:
                 found.append(cls(conn))
