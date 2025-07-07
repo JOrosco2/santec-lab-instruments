@@ -7,13 +7,14 @@ import pkgutil
 def discover_plugins(folder="plugins", plugin_type="power_meter"):
     plugins = []
     for _, module_name, _ in pkgutil.iter_modules([folder]):
+        print(f"Checking the following: {folder}.{module_name}")
         mod = importlib.import_module(f"{folder}.{module_name}")
         if hasattr(mod, "plugin_info") and mod.plugin_info.get("type") == plugin_type:
             cls_name = mod.plugin_info["class"]
             cls = getattr(mod,cls_name)
             plugins.append((module_name,cls))
     if len(plugins) == 0:
-        print(f"ERROR Could not find any plugins of {plugin_type}")
+        print(f"ERROR Could not find any plugins of type: {plugin_type}")
     return plugins
 
 #method for automaticlly connecting devices. User can sepcify number of a type of device to detect
