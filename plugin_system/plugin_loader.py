@@ -1,7 +1,9 @@
 import importlib
 import os
 import pkgutil
+import plugin_system.plugins
 
+plugin_path = plugin_system.plugins.__path__
 
 #build a list of available plugins from the plugin folder. Default search value is power meter
 def discover_plugins(package="plugin_system.plugins", plugin_type="power_meter"):
