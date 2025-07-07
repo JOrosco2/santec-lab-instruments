@@ -12,6 +12,8 @@ def discover_plugins(package="plugin_system.plugins", plugin_type="power_meter")
     package_module = importlib.import_module(package)
     package_path = package_module.__path__
 
+    print(package_path)
+
     for _, module_name, _ in pkgutil.iter_modules(package_path):
         print(f"Checking: {package}.{module_name}")
         mod = importlib.import_module(f"{package}.{module_name}")

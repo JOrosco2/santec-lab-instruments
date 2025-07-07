@@ -1,0 +1,9 @@
+Metadata-Version: 2.4
+Name: santec-lab-instruments
+Version: 0.1.0
+Summary: Modular plugin system for santec test and calibration lab
+Author-email: Jesse Orosco <jesse.orosco@santec.com>
+License: MIT
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Requires-Dist: pyvisa
