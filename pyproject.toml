@@ -3,7 +3,7 @@
 [project]
 name = "santec-lab-instruments"
 version = "0.1.0"
-description = "Modular plugin system for santec test and calibration lab"
+description = "Modular plugin system for santec california test and calibration lab"
 authors = [
   { name="Jesse Orosco", email="jesse.orosco@santec.com" }
 ]
