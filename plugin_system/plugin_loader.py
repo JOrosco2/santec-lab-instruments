@@ -30,16 +30,28 @@ def discover_plugins(package="plugin_system.plugins", plugin_type="power_meter")
 def autodetect_devices(count=1,type="power_meter"):
     plugins = discover_plugins("plugin_system.plugins",type)
     found = []
+    connected_resources = set()
+
     for module_name, cls in plugins:
         while True:
             print(f"Looking into {cls} from {module_name}")
-            conn = cls.can_connect()
-            if conn:
-                found.append(cls(conn))
-                print(f"Detected {cls.__name__} from {module_name}")
-                if len(found) == count:
-                    return found
-            else:
+            result = cls.can_connect()
+            if result is None:
                 break
-    print(f"Only found {len(found)} "+type+" , expected "+str(count))
-    return found #returns the instruments that were found.
+
+            res_string, conn = result
+
+            if res_string in connected_resources:
+                print(f"Skipping duplicate resource: {res_string}")
+                break
+            
+            connected_resources.add(res_string)
+            print(f"Connected {cls.__name__} to {res_string}")
+            found.append(cls(conn))
+
+            if len(found) == count:
+                return found if count > 1 else found[0]
+    
+    raise RuntimeError(f"No plugins found of type {type}")
+
+             

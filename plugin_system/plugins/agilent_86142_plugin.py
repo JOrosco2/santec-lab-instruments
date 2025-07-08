@@ -18,7 +18,7 @@ class OSA_86142(OSAInterface):
                 inst = rm.open_resource(i)
                 idn = inst.query("*IDN?")
                 if "86142" in idn:
-                    return inst
+                    return (i, inst)
             except:
                 continue
         return None
