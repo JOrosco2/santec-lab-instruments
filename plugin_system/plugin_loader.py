@@ -6,7 +6,7 @@ import pkgutil
 def discover_plugins(package="plugin_system.plugins", plugin_type="power_meter"):
     plugins = []
 
-    package_module = importlib.import_module(package)
+    package_module = importlib.import_module(f"{package}.plugins")
     package_path = package_module.__path__
 
     print(package_path)
