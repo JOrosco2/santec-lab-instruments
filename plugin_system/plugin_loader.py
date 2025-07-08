@@ -28,29 +28,33 @@ def discover_plugins(package="plugin_system.plugins", plugin_type="power_meter")
 
 #method for automaticlly connecting devices. User can sepcify number of a type of device to detect
 def autodetect_devices(count=1,type="power_meter"):
-    plugins = discover_plugins("plugin_system.plugins",type)
     found = []
     connected_resources = set()
 
-    for module_name, cls in plugins:
-        while True:
-            print(f"Looking into {cls} from {module_name}")
-            result = cls.can_connect()
-            if result is None:
-                break
+    plugins = discover_plugins("plugin_system.plugins",type)
 
-            res_string, conn = result
+    if len(plugins) == 0:
+        print(f"ERROR! No plugins of type: {type} found. Please contact engineering")
+    else:
+        for module_name, cls in plugins:
+            while True:
+                print(f"Looking into {cls} from {module_name}")
+                result = cls.can_connect()
+                if result is None:
+                    break
 
-            if res_string in connected_resources:
-                print(f"Skipping duplicate resource: {res_string}")
-                break
+                res_string, conn = result
+
+                if res_string in connected_resources:
+                    print(f"Skipping duplicate resource: {res_string}")
+                    break
             
-            connected_resources.add(res_string)
-            print(f"Connected {cls.__name__} to {res_string}")
-            found.append(cls(conn))
+                connected_resources.add(res_string)
+                print(f"Connected {cls.__name__} to {res_string}")
+                found.append(cls(conn))
 
-            if len(found) == count:
-                return found if count > 1 else found[0]
+                if len(found) == count:
+                    return found if count > 1 else found[0]
     
     return None
 
