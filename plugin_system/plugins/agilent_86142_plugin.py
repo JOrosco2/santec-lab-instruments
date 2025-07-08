@@ -11,10 +11,12 @@ class OSA_86142(OSAInterface):
     @classmethod
     def can_connect(cls):
         rm = pyvisa.ResourceManager()
-        for res in rm.list_resources():
+        res = rm.list_resources()
+        print(res)
+        for i in res:
             try:
-                print(f"Trying resource: {res}")
-                inst = rm.open_resource(res)
+                print(f"Trying resource: {i}")
+                inst = rm.open_resource(i)
                 idn = inst.query("*IDN?")
                 if "86142" in idn:
                     return inst
