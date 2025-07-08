@@ -1,9 +1,6 @@
 import importlib
 import os
 import pkgutil
-import plugin_system.plugins
-
-plugin_path = plugin_system.plugins.__path__
 
 #build a list of available plugins from the plugin folder. Default search value is power meter
 def discover_plugins(package="plugin_system.plugins", plugin_type="power_meter"):
@@ -27,11 +24,11 @@ def discover_plugins(package="plugin_system.plugins", plugin_type="power_meter")
     return plugins
 
 #method for automaticlly connecting devices. User can sepcify number of a type of device to detect
-def autodetect_devices(count=1,type="power_meter"):
+def autodetect_devices(count=1,package="opm_plugin",type="power_meter"):
     found = []
     connected_resources = set()
 
-    plugins = discover_plugins("plugin_system.plugins",type)
+    plugins = discover_plugins(package,type)
 
     if len(plugins) == 0:
         print(f"ERROR! No plugins of type: {type} found. Please contact engineering")
