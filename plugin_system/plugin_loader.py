@@ -13,7 +13,7 @@ def discover_plugins(package="plugin_system.plugins", plugin_type="power_meter")
 
     for _, module_name, _ in pkgutil.iter_modules(package_path):
         print(f"Checking: {package}.{module_name}")
-        mod = importlib.import_module(f"{package}.{module_name}")
+        mod = importlib.import_module(f"{package}.plugins.{module_name}")
         if hasattr(mod, "plugin_info") and mod.plugin_info.get("type") == plugin_type:
             cls_name = mod.plugin_info["class"]
             print(f"Found plugin of type {plugin_type} : name {cls_name}")
