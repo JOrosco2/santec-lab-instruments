@@ -12,7 +12,6 @@ class OSA_86142(OSAInterface):
     def can_connect(cls):
         rm = pyvisa.ResourceManager()
         res = rm.list_resources()
-        print(res)
         for i in res:
             try:
                 print(f"Trying resource: {i}")
@@ -22,7 +21,7 @@ class OSA_86142(OSAInterface):
                     return inst
             except:
                 continue
-            return None
+        return None
     
     def __init__(self, inst):
         self.inst = inst
