@@ -52,6 +52,6 @@ def autodetect_devices(count=1,type="power_meter"):
             if len(found) == count:
                 return found if count > 1 else found[0]
     
-    raise RuntimeError(f"No plugins found of type {type}")
+    return None
 
              
