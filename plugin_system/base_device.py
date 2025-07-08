@@ -19,3 +19,11 @@ class OSAInterface(ABC):
     def set_sesitivity(self, sensitivity: float): pass
     @abstractmethod
     def set_resolution_bw(sefl, bandwidth: float): pass
+
+class CLIInterface(ABC):
+    @abstractmethod
+    def connect(self): pass
+    @abstractmethod
+    def write_reg(self,msg: str,data: str): pass
+    @abstractmethod
+    def read_reg(self): pass
