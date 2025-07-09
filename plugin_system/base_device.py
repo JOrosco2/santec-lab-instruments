@@ -29,3 +29,15 @@ class CLIInterface(ABC):
     def read_reg(self,reg: str): pass
     @abstractmethod
     def read_port(self): pass
+
+class OPMInterface(ABC):
+    @abstractmethod
+    def connect(self): pass
+    @abstractmethod
+    def set_wavelength(self,wvl:float): pass
+    @abstractmethod
+    def set_opm_channel(self,ch:int): pass
+    @abstractmethod
+    def read_power(self): pass
+    @abstractmethod
+    def set_dark(self): pass
