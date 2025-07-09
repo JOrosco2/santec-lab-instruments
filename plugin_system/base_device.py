@@ -24,6 +24,6 @@ class CLIInterface(ABC):
     @abstractmethod
     def connect(self): pass
     @abstractmethod
-    def write_reg(self,msg: str,data: str): pass
+    def write_reg(self,reg: str,data: str): pass
     @abstractmethod
-    def read_reg(self): pass
+    def read_reg(self,reg: str): pass
