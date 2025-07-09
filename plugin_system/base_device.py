@@ -27,3 +27,5 @@ class CLIInterface(ABC):
     def write_reg(self,reg: str,data: str): pass
     @abstractmethod
     def read_reg(self,reg: str): pass
+    @abstractmethod
+    def read_port(self): pass
