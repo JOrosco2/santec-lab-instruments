@@ -41,3 +41,11 @@ class OPMInterface(ABC):
     def read_power(self): pass
     @abstractmethod
     def set_dark(self): pass
+
+class DAQInterface(ABC):
+    @abstractmethod
+    def connect(self): pass
+    @abstractmethod
+    def set_channel(self,ch:int,type:int):pass
+    @abstractmethod
+    def read_data(self):pass

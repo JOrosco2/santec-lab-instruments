@@ -52,7 +52,6 @@ def autodetect_devices(count=1,package="opm_plugin",type="power_meter"):
 
                 if len(found) == count:
                     return found if count > 1 else found[0]
-    
     return None
 
              
